@@ -20,12 +20,6 @@
     "moduleDetection": "force",
     "skipLibCheck": true,
     "baseUrl": "./src",
-    "paths": {
-      "models": ["models/*"],
-      "db": ["db/*"],
-      "utils": ["utils/*"],
-      "features": ["features/*"]
-    }
   },
   "include": [
     "src"
