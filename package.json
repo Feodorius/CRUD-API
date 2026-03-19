@@ -12,7 +12,6 @@
   },
   "license": "ISC",
   "author": "",
-  "type": "module",
   "main": "index.ts",
   "scripts": {
     "start:dev": "nodemon",

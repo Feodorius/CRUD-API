@@ -2,9 +2,9 @@
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./dist",
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
-    "target": "esnext",
+    "target": "ES2022",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
     "types": [],
     "esModuleInterop": true,
     "sourceMap": true,
@@ -14,11 +14,18 @@
     "exactOptionalPropertyTypes": true,
     "strict": true,
     "jsx": "react-jsx",
-    "verbatimModuleSyntax": true,
+    "verbatimModuleSyntax": false,
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
+    "baseUrl": "./src",
+    "paths": {
+      "models": ["models/*"],
+      "db": ["db/*"],
+      "utils": ["utils/*"],
+      "features": ["features/*"]
+    }
   },
   "include": [
     "src"
