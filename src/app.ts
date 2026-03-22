@@ -2,9 +2,9 @@ import Fastify from 'fastify';
 import { errorHandler } from 'utils/errorHandler';
 import { productRoutes } from 'features/products/product.routes';
 
-export const createApp = () => {
+export const createApp = (isLoggerON: boolean = true) => {
     const app = Fastify({
-        logger: true,
+        logger: isLoggerON,
     });
 
     errorHandler(app);

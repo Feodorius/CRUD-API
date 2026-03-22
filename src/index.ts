@@ -1,7 +1,7 @@
 import { createApp } from 'app';
 import { env } from 'utils/env';
 
-const start = async (): Promise<void> => {
+const start = async () => {
     const app = createApp();
 
     try {

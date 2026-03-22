@@ -7,7 +7,7 @@ import { sendInvalidUuid, sendNotFound, sendValidationError } from 'utils/errorH
 type ProductIdParam = { productId: string };
 
 export const getAllProducts = async (_request: FastifyRequest, reply: FastifyReply) => {
-    const products = productService.getAllProducts();
+    const products = await productService.getAllProducts();
     reply.status(200).send(products);
 };
 
@@ -19,7 +19,7 @@ export const getProductById = async (
 
     if (!isValidUuid(productId)) return sendInvalidUuid(reply);
 
-    const product = productService.getProductById(productId);
+    const product = await productService.getProductById(productId);
     if (!product) return sendNotFound(reply, productId);
 
     reply.status(200).send(product);
@@ -30,7 +30,7 @@ export const createProduct = async (request: FastifyRequest, reply: FastifyReply
 
     if (!parsed.success) return sendValidationError(reply, parsed.error);
 
-    const product = productService.createProduct(parsed.data);
+    const product = await productService.createProduct(parsed.data);
     reply.status(201).send(product);
 };
 
@@ -45,7 +45,7 @@ export const updateProduct = async (
     const parsed = UpdateProductSchema.safeParse(request.body);
     if (!parsed.success) return sendValidationError(reply, parsed.error);
 
-    const product = productService.updateProduct(productId, parsed.data);
+    const product = await productService.updateProduct(productId, parsed.data);
     if (!product) return sendNotFound(reply, productId);
 
     reply.status(200).send(product);
@@ -59,7 +59,7 @@ export const deleteProduct = async (
 
     if (!isValidUuid(productId)) return sendInvalidUuid(reply);
 
-    const deleted = productService.deleteProduct(productId);
+    const deleted = await productService.deleteProduct(productId);
     if (!deleted) return sendNotFound(reply, productId);
 
     reply.status(204).send();
